@@ -10,13 +10,36 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 
 class App extends React.Component {
+  state = { userName: '' };
+
+  // handleChange = ({ name, value }) => {
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  //   this.enableLoginBtn();
+  // };
+
+  // enableLoginBtn = () => {
+  //   const minUserLength = 3;
+  //   const { userName } = this.state;
+
+  //   checkString = userName.length > minUserLength;
+  //   console.log(userName.length);
+  // };
+
   render() {
+    const { userName } = this.state;
     return (
       <div>
         <p>TrybeTunes!</p>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={ Login } />
+            <Route
+              exact
+              path="/"
+              component={ Login }
+              userName={ userName }
+            />
             <Route exact path="/search" component={ Search } />
             <Route exact path="/album/:id" component={ Album } />
             <Route exact path="/favorites" component={ Favorites } />
